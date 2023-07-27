@@ -15,11 +15,11 @@ console.warn("Remember to match headers to form after file is cleaned to ensure 
 
 console.info("Cleaning will take ~30 sec.");  
 
-//recieve and parse CSV file
+//receive and parse CSV file
 
 const inputTable = parse(fs.readFileSync(process.argv[2]));
 
-// if acceptable includes table[i] {append table[i] to write}
+//if acceptable includes table[i] {append table[i] to write}
 
 let myarray = [];
 const regex = /[^A-Za-z0-9]/g;
@@ -46,23 +46,16 @@ function evalArray() {
 
         //if field is an email, do nothing
         if(/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi.test(noSpecial)) {
-
           arr.push(noSpecial);
 
-        }
-        //more aggressive regex
-        else {
-
+        } else {            
           //regex to remove "+" sign, but ignore if it's in phone field
 
           if(/[+]+[\d]/g.test(noSpecial)) {
-
             arr.push(noSpecial);
 
-          }
-
-          else {
-
+          } else {
+            //more aggressive regex
             //cleaning improper formatting e.g. surc\work -> surc/work
             noSpecial = noSpecial.replace(/[\\]/g, "/")
             
@@ -74,15 +67,13 @@ function evalArray() {
   
             //append to filter array
             arr.push(noSpecial);
-
           }
         }
-
       })
-
+        
       myarray.push(arr);
-
-     })
+        
+   })
 }
 
 //main method
@@ -92,7 +83,7 @@ evalArray();
 //converting filtered array back into CSV format
 const out = stringify(myarray);
 
-// write to file and catch errors
+//write to file and catch errors
 fs.writeFile('cleanedCSV.csv', out, (err) => {
   if (err) throw err;
   else {
