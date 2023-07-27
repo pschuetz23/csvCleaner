@@ -61,6 +61,9 @@ function evalArray() {
             
             //remove all non-accepted special characters (accept "'-&,/")
             noSpecial = noSpecial.replace(/[^A-Za-z0-9 '\-,&/]/g, "");
+              
+            //remove repeating special characters (if any)
+            noSpecial = noSpecial.replace(/[^A-Za-z0-9 ]{2,}/g, "");
   
             //remove any double spaces
             noSpecial = noSpecial.replace(/[" "]+[" "]/g, " ");
