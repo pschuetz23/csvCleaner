@@ -1,6 +1,6 @@
-# csvCleanup
+# csvCleaner
 
-csvCleanup is a script designed to process CSV files and remove any special characters while leaving specific fields like email alone.
+csvCleaner is a script designed to process CSV files and remove any special characters while leaving specific fields like email alone.
 
 *Prerequisites*
 
@@ -16,6 +16,6 @@ To install dependencies.
 To clean your CSV file run the script alongside your CSV file as input, the script will run and create a cleaned file in the same directory as the script automatically.
 
 Example:
-~$ node csvCleanup.js mycsvfile.csv
+~$ node csvCleaner.js mycsvfile.csv
 
 Happy cleaning!
